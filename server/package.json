@@ -16,6 +16,7 @@
     "bluebird": "^3.5.3",
     "body-parser": "^1.18.3",
     "connect": "^3.6.6",
+    "csv-write-stream": "^2.0.0",
     "data-pixels": "^1.0.3",
     "express": "^4.16.4",
     "fetch": "^1.1.0",
