@@ -68,3 +68,4 @@ package-lock.json
 
 # private info
 secrets/
+server/images/*
