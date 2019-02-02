@@ -1,0 +1,28 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SLOHacks Backend",
+  "repository": "https://github.com/plebeiathon/motorskills.git",
+  "license": "MIT",
+  "author": "Adrian Darian",
+  "main": "index.js",
+  "scripts": {
+    "serve": "nodemon process.js",
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "connect": "^3.6.6",
+    "data-pixels": "^1.0.3",
+    "express": "^4.16.4",
+    "fetch": "^1.1.0",
+    "fs": "^0.0.1-security",
+    "gm": "^1.23.1",
+    "http": "^0.0.0",
+    "imagemagick": "^0.1.3",
+    "nodemon": "^1.18.9",
+    "serialport": "^7.1.4",
+    "serve-static": "^1.13.2"
+  }
+}
