@@ -20,10 +20,10 @@ for (var i = 0; i < 10; i++) {
     }
 
     //gm('./motor.csv').append('gs://greyscale/img/output-' + time + '.png', true);
-    
+
     // fs.writeFileSync('motor.csv', `gs://greyscale/img/output-${time}.png`);
     fs.appendFile('motor.csv', `gs://greyscale/img/output-${time}.png\n`, 'utf8', (err) => {
         if (err) throw err;
         console.log('The "data to append" was appended to file!');
-      })
+    })
 }

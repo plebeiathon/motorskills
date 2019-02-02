@@ -5,6 +5,7 @@ const http = require('http').Server(app); // eslint-disable-line
 const path = require('path');
 
 require('./gradientGen.js');
+require('./ml.js')
 
 const SERVER_PORT = 3000;
 
@@ -22,6 +23,10 @@ app.use((req, res) => {
   res.status(404).json({
     message: 'resource not found',
   });
+});
+
+app.get('/ml', (req, res) => {
+  res.sendFile(path.join(__dirname + 'index.html'));
 });
 
 
