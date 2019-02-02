@@ -1,4 +1,3 @@
-var fs = require('fs')
 var gm = require('gm');
 
 const path = "images/pixel"
@@ -17,7 +16,7 @@ for (var i = 0; i < 10; i++) {
         gm(1, 1, "rgb(" + data[j] + "," + data[j] + "," + data[j] + ")")
             .write(path + j + ".png", function (err) {
             });
-        gm("images/Outputs/output" + i + ".png").append(path + i + ".png", true).write("images/Outputs/output" + i + ".png", function (err) { });
+        gm("images/Outputs/output" + i + ".png").append(path + j + ".png", true).write("images/Outputs/output" + i + ".png", function (err) { });
     }
 }
 
