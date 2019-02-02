@@ -28,30 +28,22 @@
 #include <SoftwareSerial.h>
 
 SoftwareSerial mySerial(10, 11); // RX, TX
-
+int count = 0;
 void setup() {
   // Open serial communications and wait for port to open:
-  Serial.begin(57600);
-  while (!Serial) {
-    ; // wait for serial port to connect. Needed for native USB port only
-  }
-
-
-  Serial.println("Goodnight moon!");
-
+//  Serial.begin(57600);
   // set the data rate for the SoftwareSerial port
   mySerial.begin(4800);
-  mySerial.println("Hello, world?");
+//  mySerial.println("Hello, world?");
 }
 
 void loop() { // run over and over
-  if (mySerial.available()) {
-    //get bluetooth communications
-    Serial.write(mySerial.read());
-  }
   //read sensor, communicate?
-  mySerial.write(analogRead(0));
-  Serial.write(analogRead(0));
+  //int val = analogRead(0);
+//  for (int i = 0; i < 10; i++) { mySerial.write(i * i ); delay(100);}
+ count++;
+ mySerial.write(count);
+// Serial.println(count);
   delay(300);
 }
 
