@@ -2,17 +2,22 @@ var fs = require('fs')
 var gm = require('gm');
 
 const path = "images/pixel"
+var data = [];
 
-var data = [0, 150, 255, 24, 100, 239, 1, 240, 0, 200];
+for (var i = 0; i < 10; i++) {
+    for (let j = 0; j < 10; j++) {
+        data[j] = Math.random() * 255 + 1;
+    }
 
-gm(1, 1, "rgb(" + data[0] + "," + data[0] + "," + data[0] + ")")
-.write("images/output.png", function (err) {
-});
-
-for (let i = 1; i < data.length; i++) {
-    gm(1, 1, "rgb(" + data[i] + "," + data[i] + "," + data[i] + ")")
-        .write(path + i + ".png", function (err) {
+    gm(1, 1, "rgb(" + data[0] + "," + data[0] + "," + data[0] + ")")
+        .write("images/Outputs/output" + i + ".png", function (err) {
         });
-    gm("images/output.png").append(path + i + ".png", true).write("images/output.png", function (err) { });
+
+    for (let j = 1; j < data.length; j++) {
+        gm(1, 1, "rgb(" + data[j] + "," + data[j] + "," + data[j] + ")")
+            .write(path + j + ".png", function (err) {
+            });
+        gm("images/Outputs/output" + i + ".png").append(path + i + ".png", true).write("images/Outputs/output" + i + ".png", function (err) { });
+    }
 }
 
