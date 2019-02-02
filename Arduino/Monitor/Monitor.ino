@@ -31,19 +31,23 @@ SoftwareSerial mySerial(10, 11); // RX, TX
 int count = 0;
 void setup() {
   // Open serial communications and wait for port to open:
-//  Serial.begin(57600);
+ Serial.begin(9600);
   // set the data rate for the SoftwareSerial port
-  mySerial.begin(4800);
+  mySerial.begin(9600);
 //  mySerial.println("Hello, world?");
 }
 
 void loop() { // run over and over
   //read sensor, communicate?
   //int val = analogRead(0);
-//  for (int i = 0; i < 10; i++) { mySerial.write(i * i ); delay(100);}
+//  for (int i = 0; i < 10; i++) { mySerial.write(i * i ); delay(10`0);}
  count++;
- mySerial.write(count);
-// Serial.println(count);
+ mySerial.write(map(analogRead(0), 0, 1024, 10, 250));
+//  mySerial.write(100);
+// Serial.println(map(analogRead(0), 0, 1024, 10, 250));
+Serial.println(analogRead(A0));
+//Serial.print("-->");
+//Serial.println(analogRead(A1));
   delay(300);
 }
 
