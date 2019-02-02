@@ -42,33 +42,40 @@ Queue.prototype.size = function() {
   return this.data.length;
 }
 
+let count = true;
+
 // Read the port data
 port.on("open", function () {
   console.log('open\n');
   port.on('data', function (data) {
-    //const q = new Queue();
+    const q = new Queue();
     let result = [];
     for (let i = 0; i < data.length; i++) {
       result[i] = data[i];
-      //q.enqueue(data[i]);
+      q.enqueue(data[i]);
     }
 
     let image = [];
     //console.log("q: ", q, "\n", "size: ", q.size(), "\n");
-    // if (q.size() >= 10) {
-    //   for (let x = 0; x < 10; x++) {
-    //     image[x] = q.first();
-    //     q.dequeue();
-    //   }
-    // }
+    if (q.size() >= 10) {
+      for (let x = 0; x < 10; x++) {
+        image[x] = q.first();
+        q.dequeue();
+      }
+    }
 
 
-    //console.log("image: ", image, "\n");
+    // console.log("image: ", image, "\n");
     // image.length = 0;
     // console.log("image: ", image, "\n");
 
     // console.log('\033[2J'); // clear console
-    console.log(result, ":len:", data.length);
+    console.log(count, " :result: ", result, ":len:", data.length);
+    if (count == 0) {
+      count++;
+    } else {
+      count--;
+    }
 
     function end() {
       console.log("Stream closed.")
