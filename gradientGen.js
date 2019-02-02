@@ -1,16 +1,13 @@
-/**
- * @description DataPixels basic code example
- * 
- */
-import DataPixels from "data-pixels";
+import DataPixels from "data-pixels"
 
-var input = [/*Data*/];
+var input = [0, 3, 213, 123, 32, 123, 321, 123];
 var colors = [];
 var data = [];
 
-for(let i = 0; i < input.length; i++){
+for (let i = 0; i < input.length; i++) {
     colors.push(input[i] + ", " + input[i] + ", " + input[i] + ";");
     data.push(colors[i] + ", ");
+    console.log(data);
 }
 
 const size = 10;
