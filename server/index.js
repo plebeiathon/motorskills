@@ -24,6 +24,7 @@ app.use((req, res) => {
   });
 });
 
+
 http.listen(process.env.PORT || SERVER_PORT, () => {
   console.log(`Server started on the http://localhost:${SERVER_PORT}`);
 });

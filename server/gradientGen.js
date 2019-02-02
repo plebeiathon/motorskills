@@ -1,17 +1,10 @@
-const DataPixels = require('data-pixels');
+var fs = require('fs')
+var gm = require('gm');
 
-const input = [0, 3, 213, 123, 32, 123, 321, 123];
-const colors = [];
-const data = [];
+const path = "brandNewImg.jpg"
 
-for (let i = 0; i < input.length; i++) {
-    colors.push(input[i] + ", " + input[i] + ", " + input[i] + ";");
-    data.push(colors[i] + ", ");
-    console.log(data);
-}
+gm(200, 400, "#ddff99f3")
+    .drawText(10, 50, "from scratch")
+    .write(path, function (err) {
 
-const size = 10;
-
-const image = new DataPixels(data, size).image;
-
-//Send this data to the model or something.
+    });
