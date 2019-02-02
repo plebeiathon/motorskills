@@ -5,6 +5,7 @@ const http = require('http').Server(app); // eslint-disable-line
 const path = require('path');
 
 require('./gradientGen.js');
+var im = require('imagemagick');
 
 const SERVER_PORT = 3000;
 
@@ -23,6 +24,13 @@ app.use((req, res) => {
     message: 'resource not found',
   });
 });
+
+im.convert(['kittens.jpg', '-resize', '25x120', 'kittens-small.jpg'], 
+function(err, stdout){
+  if (err) throw err;
+  console.log('stdout:', stdout);
+});
+
 
 http.listen(process.env.PORT || SERVER_PORT, () => {
   console.log(`Server started on the http://localhost:${SERVER_PORT}`);
