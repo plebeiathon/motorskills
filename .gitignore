@@ -65,3 +65,6 @@ yarn.lock
 package-lock.json
 
 .vscode
+
+# private info
+secrets/
