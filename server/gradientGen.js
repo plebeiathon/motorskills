@@ -1,23 +1,10 @@
-// const DataPixels = require('data-pixels');
+var fs = require('fs')
+var gm = require('gm');
 
-// // const input = ["0", "0", "0", "0", "0", "0", "0", "0"];
-// // const colors = [];
-// // const data = [];
-// const R = "255, 0, 0, 255";    //Red
-// const G = "0, 255, 0, 255";    //Green
-// const B = "0, 0, 255, 255"; 
-// const _ = "0, 0, 0, 0"; 
+const path = "brandNewImg.jpg"
 
-// // for (let i = 0; i < input.length; i++) {
-// //     colors.push(input[i] + ", " + input[i] + ", " + input[i]);
+gm(200, 400, "#ddff99f3")
+    .drawText(10, 50, "from scratch")
+    .write(path, function (err) {
 
-// //     data.concat(colors[i])
-// // }
-// // console.log(data)
-
-// const data = [[R, G],
-//               [B, _]];
-
-// const size = 10;
-
-// const image = new DataPixels(data, size).image;
+    });

@@ -5,8 +5,6 @@ const http = require('http').Server(app); // eslint-disable-line
 const path = require('path');
 
 require('./gradientGen.js');
-var fs = require('fs')
-  , gm = require('gm');
 
 const SERVER_PORT = 3000;
 
@@ -18,11 +16,6 @@ app.use(express.static(path.join('../client')));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname + 'index.html'));
-  gm(200, 400, "#ddff99f3")
-    .drawText(10, 50, "from scratch")
-    .write("/brandNewImg.jpg", function (err) {
-    });
-  console.log("Test");
 });
 
 app.use((req, res) => {

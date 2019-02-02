@@ -17,7 +17,6 @@
     "data-pixels": "^1.0.3",
     "express": "^4.16.4",
     "fetch": "^1.1.0",
-    "fs": "^0.0.1-security",
     "gm": "^1.23.1",
     "http": "^0.0.0",
     "imagemagick": "^0.1.3",
