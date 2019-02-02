@@ -4,16 +4,17 @@
  */
 import DataPixels from "data-pixels";
 
-const R = "255, 0, 0, 255";    //Red
-const G = "0, 255, 0, 255";    //Green
-const B = "0, 0, 255, 255";    //Blue
-const _ = "0, 0, 0, 0";        //Transparent
+var input = [/*Data*/];
+var colors = [];
+var data = [];
 
-const data = [[R, G],
-              [B, _]];
+for(let i = 0; i < input.length; i++){
+    colors.push(input[i] + ", " + input[i] + ", " + input[i] + ";");
+    data.push(colors[i] + ", ");
+}
 
-const size = 100;
+const size = 10;
 
 const image = new DataPixels(data, size).image;
 
-document.body.appendChild(image);
+//Send this data to the model or something.
