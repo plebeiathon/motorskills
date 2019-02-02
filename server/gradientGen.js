@@ -1,8 +1,8 @@
-import DataPixels from "data-pixels"
+const DataPixels = require('data-pixels');
 
-var input = [0, 3, 213, 123, 32, 123, 321, 123];
-var colors = [];
-var data = [];
+const input = [0, 3, 213, 123, 32, 123, 321, 123];
+const colors = [];
+const data = [];
 
 for (let i = 0; i < input.length; i++) {
     colors.push(input[i] + ", " + input[i] + ", " + input[i] + ";");
