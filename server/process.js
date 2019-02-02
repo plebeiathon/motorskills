@@ -8,6 +8,11 @@ connect().listen(8080, function () {
 });
 
 // Open the port
+
+// *************************
+//       BaudRate for Bluetooth 9600
+// *************************
+
 const port = new serialport("/dev/cu.HC-06-DevB", {
   baudRate: 9600 // remember to check baudrate
 });
