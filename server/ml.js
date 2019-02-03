@@ -5,13 +5,13 @@ const client = new automl.PredictionServiceClient(); // gcloud auth application-
 
 const projectId = 'slo-hacks'
 const computeRegion = 'us-central1'
-const modelId = 'ICN5975517313197165750';
+const modelId = 'ICN1244335180378474763';
 const scoreThreshold = '0.5'
 
 const modelFullId = client.modelPath(projectId, computeRegion, modelId);
 
-function ml() {
 const data = require('./motor.json');
+console.log(data.length);
 for (let i = 0; i < data.length; i++) {
   const filePath = data[i].image;
   const content = fs.readFileSync(filePath, 'base64');
@@ -32,7 +32,7 @@ for (let i = 0; i < data.length; i++) {
       params: params,
     });
 
-    console.log(`Prediction results:`);
+    console.log(`${i}: Prediction results:`);
     response.payload.forEach(result => {
       console.log(`Predicted class name: ${result.displayName}`);
       console.log(`Predicted class score: ${result.classification.score}`);
@@ -41,11 +41,7 @@ for (let i = 0; i < data.length; i++) {
 
   Predict();
 }
-}
-
-setInterval(ml, 1000);
-
 
 // curl -X POST -H "Content-Type: application/json" \
 //   -H "Authorization: Bearer $(gcloud auth application-default print-access-token)" \
-//   https://automl.googleapis.com/v1beta1/projects/slo-hacks/locations/us-central1/models/ICN5975517313197165750:predict -d @request.json
+//   https://automl.googleapis.com/v1beta1/projects/slo-hacks/locations/us-central1/models/ICN1244335180378474763:predict -d @request.json
