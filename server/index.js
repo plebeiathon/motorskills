@@ -7,6 +7,8 @@ const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
 const fs = require('fs');
 
+require('./ml');
+
 // fs.readFile('motor.json', bar)
 
 function bar(err, data) {

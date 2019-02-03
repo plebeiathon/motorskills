@@ -6,36 +6,45 @@ const client = new automl.PredictionServiceClient(); // gcloud auth application-
 const projectId = 'slo-hacks'
 const computeRegion = 'us-central1'
 const modelId = 'ICN5975517313197165750';
-// const filePath = '/Volumes/X/GitHub/motorskills/server/images/Outputs/output-1549134990550.png'
 const scoreThreshold = '0.5'
 
 const modelFullId = client.modelPath(projectId, computeRegion, modelId);
-const filePath = 'images/Outputs/output-1549157703643.png';
-const content = fs.readFileSync(filePath, 'base64');
 
-const params = {};
-
-if (scoreThreshold) {
-  params.scoreThreshold = scoreThreshold;
-}
-
-const payload = {};
+function ml() {
 const data = require('./motor.json');
-//console.log(data)
-payload.image = { imageBytes: content };
+for (let i = 0; i < data.length; i++) {
+  const filePath = data[i].image;
+  const content = fs.readFileSync(filePath, 'base64');
 
-async function predict() {
-  const [response] = await client.predict({
-    name: modelFullId,
-    payload: payload,
-    params: params,
-  });
-  console.log(`Prediction results:`);
-  response.payload.forEach(result => {
-    console.log(`Predicted class name: ${result.displayName}`);
-    console.log(`Predicted class score: ${result.classification.score}`);
-  });
+  const params = {};
+
+  if (scoreThreshold) {
+    params.score_threshold = scoreThreshold;
+  }
+
+  const payload = {};
+  payload.image = { imageBytes: content };
+
+  async function Predict() {
+    const [response] = await client.predict({
+      name: modelFullId,
+      payload: payload,
+      params: params,
+    });
+
+    console.log(`Prediction results:`);
+    response.payload.forEach(result => {
+      console.log(`Predicted class name: ${result.displayName}`);
+      console.log(`Predicted class score: ${result.classification.score}`);
+    });
+  }
+
+  Predict();
 }
+}
+
+setInterval(ml, 1000);
+
 
 // curl -X POST -H "Content-Type: application/json" \
 //   -H "Authorization: Bearer $(gcloud auth application-default print-access-token)" \

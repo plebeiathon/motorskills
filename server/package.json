@@ -9,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "serve": "nodemon -e js,html process.js",
-    "start": "nodemon index.js",
+    "start": "nodemon -e js,html index.js",
     "empty": "node empty.js"
   },
   "dependencies": {
