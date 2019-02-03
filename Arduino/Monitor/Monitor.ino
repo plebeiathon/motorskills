@@ -21,8 +21,12 @@ void loop() {
    lastValRotary = valRotary;
    delay(250);
 
+    
    if (encoder0Pos < 0) encoder0Pos = -encoder0Pos;
-   mySerial.write(encoder0Pos * 4);
+   encoder0Pos *= 5;
+   if (encoder0Pos > 254) encoder0Pos = 254;
+   mySerial.write(encoder0Pos);
+   
    encoder0Pos = 0;
 }
 void doEncoder()
