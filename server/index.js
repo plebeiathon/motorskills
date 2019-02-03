@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const http = require('http'); // eslint-disable-line
+const http = require('http').Server(app); // eslint-disable-line
 const path = require('path');
 const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
@@ -37,12 +37,6 @@ app.use((req, res) => {
   });
 });
 
-app.get('/ml', (req, res) => {
-  res.sendFile(path.join(__dirname + 'index.html'));
-});
-
-
-
 // Parallel Clustering
 if (cluster.isMaster) { // Check if Cluster is a Master
   console.log(`Master ${process.pid} is running`);
@@ -58,10 +52,7 @@ if (cluster.isMaster) { // Check if Cluster is a Master
 } else {
   // Workers can share any TCP connection
   // In this case it is an HTTP server
-  http.createServer((req, res) => {
-    res.writeHead(200);
-    res.end('hello world\n');
-  }).listen(process.env.PORT || SERVER_PORT, () => {
+  http.listen(process.env.PORT || SERVER_PORT, () => {
     console.log(`Server started on the http://localhost:${SERVER_PORT}`);
   });
 
