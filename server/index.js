@@ -37,6 +37,10 @@ app.use((req, res) => {
   });
 });
 
+app.get('/ml', (req, res) => {
+  res.sendFile(path.join(__dirname + 'index.html'));
+});
+
 
 
 // Parallel Clustering
