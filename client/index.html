@@ -656,9 +656,10 @@
   <script> var ifScanned = false;
 
     document.addEventListener("keydown", barScanned);
+    var isScanned = false;
 
     function barScanned() {
-      ifScanned = true;
+      isScanned = !isScanned;
     }</script>
 </body>
 
