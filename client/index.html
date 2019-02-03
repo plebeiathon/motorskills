@@ -30,7 +30,7 @@
       </button>
       <!-- Brand -->
       <a class="navbar-brand pt-0" href="./index.html">
-        <img src="./assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
+        <img src="./assets/img/brand/motorskillslogo.png" class="navbar-brand-img" alt="...">
       </a>
       <!-- User -->
       <ul class="nav align-items-center d-md-none">
@@ -154,21 +154,21 @@
         <!-- Divider -->
         <hr class="my-3">
         <!-- Heading -->
-        <h6 class="navbar-heading text-muted">Getting Started</h6>
+        <!-- <h6 class="navbar-heading text-muted">MotorSkills</h6> -->
         <!-- Navigation -->
         <ul class="navbar-nav mb-md-3">
           <li class="nav-item">
-            <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
+            <a class="nav-link" href="#">
               <i class="ni ni-spaceship"></i>Industrial IOT
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html">
+            <a class="nav-link" href="#">
               <i class="ni ni-palette"></i>Google Cloud Platform
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html">
+            <a class="nav-link" href="# ">
               <i class="ni ni-ui-04"></i>About
             </a>
           </li>
@@ -371,26 +371,27 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-4">
+        <div class="col-xl-4" id = "neededAction">
           <div class="card shadow">
             <div class="card-header bg-transparent">
               <div class="row align-items-center">
                 <div class="col">
                   <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-                  <h2 class="mb-0">Total orders</h2>
+                  <h2 class="mb-0">Action Needed</h2>
                 </div>
               </div>
             </div>
             <div class="card-body">
+              <p>Increase the Voltage</p>
               <!-- Chart -->
-              <div class="chart">
+              <!-- <div class="chart">
                 <canvas id="chart-orders" class="chart-canvas"></canvas>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
       </div>
-      <div class="row mt-5">
+      <!-- <div class="row mt-5">
         <div class="col-xl-8 mb-5 mb-xl-0">
           <div class="card shadow">
             <div class="card-header border-0">
@@ -404,7 +405,6 @@
               </div>
             </div>
             <div class="table-responsive">
-              <!-- Projects table -->
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                   <tr>
@@ -503,7 +503,7 @@
               </div>
             </div>
             <div class="table-responsive">
-              <!-- Projects table -->
+              Projects table
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                   <tr>
@@ -613,9 +613,9 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- Footer -->
-      <footer class="footer">
+      <!-- <footer class="footer">
         <div class="row align-items-center justify-content-xl-between">
           <div class="col-xl-6">
             <div class="copyright text-center text-xl-left text-muted">
@@ -641,7 +641,7 @@
 
           </div>
         </div>
-      </footer>
+      </footer> -->
     </div>
   </div>
   <!-- Argon Scripts -->
@@ -657,8 +657,12 @@
     document.addEventListener("keydown", barScanned);
     function barScanned() {
         var x = document.getElementById("main-chart");
+        var y = document.getElementById("neededAction");
         if(x.style.display === "inline"){x.style.display = "none";}
         else {x.style.display = "inline";}
+
+        if(y.style.display === "inline"){y.style.display = "none";}
+        else {y.style.display = "inline";}
     }</script>
 </body>
 
