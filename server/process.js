@@ -7,6 +7,22 @@ const util = require('util');
 const {
   Storage
 } = require('@google-cloud/storage');
+var admin = require("firebase-admin");
+
+var serviceAccount = require("./slo-hacks-firebase-adminsdk-qv6p6-b6c196c613.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://slo-hacks.firebaseio.com",
+  apiKey: "AIzaSyDjK-DQcY2_8wBTWweA5VvHpo4Yno4QMkY",
+  authDomain: "slo-hacks.firebaseapp.com",
+  databaseURL: "https://slo-hacks.firebaseio.com",
+  projectId: "slo-hacks",
+  storageBucket: "slo-hacks.appspot.com",
+  messagingSenderId: "913680861950"
+});
+let db = admin.firestore();
+
 
 connect().listen(8080, function () {
   console.log('Server running on 8080...');
@@ -69,10 +85,17 @@ port.on('open', function () {
     for (let i = 0; i < data.length; i++) {
       result[i] = data[i];
       q.enqueue(data[i]);
-      fs.appendFile('graph.txt', `${data[i]},`, 'utf8', (err) => {
-        if (err) throw err;
-        console.log('The graph point was appended to the txt file!');
-      });
+      if (data[i] == 0) {
+        // do nothing
+      } else {
+        // Add a new document with a generated id.
+        var addDoc = db.collection('revolutions').add({
+          date: new Date(),
+          rpm: data[i]
+        }).then(ref => {
+          console.log('Added document with ID: ', ref.id);
+        });
+      }
     }
 
     console.log('q: ', q, '\n', 'size: ', q.size(), '\n');
@@ -136,15 +159,15 @@ port.on('open', function () {
           return `https://storage.googleapis.com/${BUCKET_NAME}/img/${fileName}`;
         }
 
-        motor.push({
-          'date': time,
-          'image': `images/Outputs/output-${time}.png`
-        });
+        // motor.push({
+        //   'date': time,
+        //   'image': `images/Outputs/output-${time}.png`
+        // });
 
-        fs.writeFileSync('motor.json', JSON.stringify(motor), 'utf8', (err) => {
-          if (err) throw err;
-          console.log('The image was appended to the json file!');
-        });
+        // fs.writeFileSync('motor.json', JSON.stringify(motor), 'utf8', (err) => {
+        //   if (err) throw err;
+        //   console.log('The image was appended to the json file!');
+        // });
       }
     }
 

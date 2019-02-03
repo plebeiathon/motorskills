@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "http": "^0.0.0"
+  },
+  "name": "motorskills",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/plebeiathon/motorskills.git",
+  "author": "Adrian Darian <adarian@ucmerced.edu>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node app.js"
+  }
+}
