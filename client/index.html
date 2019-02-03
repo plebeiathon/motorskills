@@ -168,8 +168,8 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="# ">
-              <i class="ni ni-ui-04"></i>About
+            <a class="nav-link" href="https://github.com/plebeiathon/motorskills" target="_blank">
+              <i class="ni ni-ui-04"></i>Github
             </a>
           </li>
         </ul>
@@ -202,7 +202,7 @@
                 <span class="avatar avatar-sm rounded-circle">
                   <img alt="Image placeholder" src="./assets/img/theme/team-4-800x800.jpg">
                 </span> -->
-                <!-- <div class="media-body ml-2 d-none d-lg-block">
+              <!-- <div class="media-body ml-2 d-none d-lg-block">
                   <span class="mb-0 text-sm  font-weight-bold">Jessica Jones</span>
                 </div>
               </div> -->
@@ -237,6 +237,23 @@
         </ul>
       </div>
     </nav>
+    <div style="width: 20rem;">
+      <div class="card card-stats mb-4 mb-lg-0">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title text-uppercase text-muted mb-0">Number of Motors</h5>
+              <span class="h2 font-weight-bold mb-0" id="motor-count">0</span>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                <i class="fas fa-chart-bar"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Header -->
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
       <div class="container-fluid">
@@ -331,67 +348,67 @@
         </div>
       </div>
     </div> -->
-    <!-- Page content -->
-    <div class="container-fluid mt--7">
-      <div class="row">
-        <div class="col-xl-8 mb-5 mb-xl-0" id = "main-chart">
-          <div class="card bg-gradient-default shadow">
-            <div class="card-header bg-transparent">
-              <div class="row align-items-center">
-                <div class="col">
-                  <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6>
-                  <h2 class="text-white mb-0">RPM of Motor #1</h2>
-                </div>
-                <div class="col">
-                  <ul class="nav nav-pills justify-content-end">
-                    <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}'
-                      data-prefix="" data-suffix=" RPM">
-                      <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
-                        <span class="d-none d-md-block">Month</span>
-                        <span class="d-md-none">M</span>
-                      </a>
-                    </li>
-                    <li class="nav-item" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}'
-                      data-prefix="" data-suffix=" RPM">
-                      <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
-                        <span class="d-none d-md-block">Week</span>
-                        <span class="d-md-none">W</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <!-- Chart -->
-              <div class="chart">
-                <!-- Chart wrapper -->
-                <canvas id="chart-sales" class="chart-canvas"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-4" id = "neededAction">
-          <div class="card shadow">
-            <div class="card-header bg-transparent">
-              <div class="row align-items-center">
-                <div class="col">
-                  <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-                  <h2 class="mb-0">Action Needed</h2>
+          <!-- Page content -->
+          <div class="container-fluid mt--7">
+            <div class="row">
+              <div class="col-xl-8 mb-5 mb-xl-0" id="main-chart" style="display: none">
+                <div class="card bg-gradient-default shadow">
+                  <div class="card-header bg-transparent">
+                    <div class="row align-items-center">
+                      <div class="col">
+                        <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6>
+                        <h2 class="text-white mb-0">RPM of Motor #1</h2>
+                      </div>
+                      <div class="col">
+                        <ul class="nav nav-pills justify-content-end">
+                          <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}'
+                            data-prefix="" data-suffix=" RPM">
+                            <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
+                              <span class="d-none d-md-block">Month</span>
+                              <span class="d-md-none">M</span>
+                            </a>
+                          </li>
+                          <li class="nav-item" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}'
+                            data-prefix="" data-suffix=" RPM">
+                            <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
+                              <span class="d-none d-md-block">Week</span>
+                              <span class="d-md-none">W</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <!-- Chart -->
+                    <div class="chart">
+                      <!-- Chart wrapper -->
+                      <canvas id="chart-sales" class="chart-canvas"></canvas>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="card-body">
-              <p>Increase the Voltage</p>
-              <!-- Chart -->
-              <!-- <div class="chart">
+              <div class="col-xl-4" id="neededAction" style="display: none">
+                <div class="card shadow">
+                  <div class="card-header bg-transparent">
+                    <div class="row align-items-center">
+                      <div class="col">
+                        <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
+                        <h2 class="mb-0">Action Needed</h2>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <p>Increase the Voltage</p>
+                    <!-- Chart -->
+                    <!-- <div class="chart">
                 <canvas id="chart-orders" class="chart-canvas"></canvas>
               </div> -->
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <!-- <div class="row mt-5">
+            <!-- <div class="row mt-5">
         <div class="col-xl-8 mb-5 mb-xl-0">
           <div class="card shadow">
             <div class="card-header border-0">
@@ -614,8 +631,8 @@
           </div>
         </div>
       </div> -->
-      <!-- Footer -->
-      <!-- <footer class="footer">
+            <!-- Footer -->
+            <!-- <footer class="footer">
         <div class="row align-items-center justify-content-xl-between">
           <div class="col-xl-6">
             <div class="copyright text-center text-xl-left text-muted">
@@ -642,28 +659,30 @@
           </div>
         </div>
       </footer> -->
-    </div>
-  </div>
-  <!-- Argon Scripts -->
-  <!-- Core -->
-  <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="./assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Optional JS -->
-  <script src="./assets/vendor/chart.js/dist/Chart.min.js"></script>
-  <script src="./assets/vendor/chart.js/dist/Chart.extension.js"></script>
-  <!-- Argon JS -->
-  <script src="./assets/js/argon.js?v=1.0.0"></script>
-  <script> var ifScanned = false;
-    document.addEventListener("keydown", barScanned);
-    function barScanned() {
-        var x = document.getElementById("main-chart");
-        var y = document.getElementById("neededAction");
-        if(x.style.display === "inline"){x.style.display = "none";}
-        else {x.style.display = "inline";}
+          </div>
+        </div>
+        <!-- Argon Scripts -->
+        <!-- Core -->
+        <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
+        <script src="./assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Optional JS -->
+        <script src="./assets/vendor/chart.js/dist/Chart.min.js"></script>
+        <script src="./assets/vendor/chart.js/dist/Chart.extension.js"></script>
+        <!-- Argon JS -->
+        <script src="./assets/js/argon.js?v=1.0.0"></script>
+        <script> var ifScanned = false;
+          document.addEventListener("keydown", barScanned);
+          function barScanned() {
+            var graph = document.getElementById("main-chart");
+            var actions = document.getElementById("neededAction");
+            var motorCount = document.getElementById("motor-count");
 
-        if(y.style.display === "inline"){y.style.display = "none";}
-        else {y.style.display = "inline";}
-    }</script>
+            if (graph.style.display === "inline") { graph.style.display = "none"; motorCount.innerHTML = 0; }
+            else { graph.style.display = "inline"; motorCount.innerHTML = 1; }
+
+            if (actions.style.display === "inline") { actions.style.display = "none"; }
+            else { actions.style.display = "inline"; }
+          }</script>
 </body>
 
 </html>
