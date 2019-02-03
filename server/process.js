@@ -3,6 +3,7 @@ const serialport = require('serialport');
 const connect = require('connect');
 const gm = require('gm');
 const fs = require('fs');
+const util = require('util');
 const {
   Storage
 } = require('@google-cloud/storage');
@@ -58,6 +59,7 @@ let count = true;
 let image = [];
 const q = new Queue();
 let result = [];
+let motor = [];
 
 // Read the port data
 port.on('open', function () {
@@ -77,20 +79,18 @@ port.on('open', function () {
 
       let time = (new Date).getTime();
       gm(1, 1, `rgb(${image[0]}, ${image[0]}, ${image[0]})`)
-      .write(`images/Outputs/output-${time}.png`, function (err) {
-      });
+        .write(`images/Outputs/output-${time}.png`, function (err) {});
 
       for (let j = 1; j < image.length; j++) {
-          gm(1, 1, `rgb(${image[j]}, ${image[j]}, ${image[j]})`)
-              .write(`images/pixel${j}.png`, function (err) {
-              });
-          gm(`images/Outputs/output-${time}.png`).append(`images/pixel${j}.png`, true).write(`images/Outputs/output-${time}.png`, function (err) { });
+        gm(1, 1, `rgb(${image[j]}, ${image[j]}, ${image[j]})`)
+          .write(`images/pixel${j}.png`, function (err) {});
+        gm(`images/Outputs/output-${time}.png`).append(`images/pixel${j}.png`, true).write(`images/Outputs/output-${time}.png`, function (err) {});
       }
 
       fs.appendFile('motor.csv', `gs://slo-hacks-vcm/output-${time}.png\n`, 'utf8', (err) => {
-          if (err) throw err;
-          console.log('The "data to append" was appended to file!');
-        });
+        if (err) throw err;
+        console.log('The image was appended to the csv file!');
+      });
 
       const file = bucket.file('output-' + time + '.png');
       file.exists()
@@ -106,7 +106,6 @@ port.on('open', function () {
 
 
       // upload file to bucket
-      // gm('./motor.csv').append('gs://greyscale/img/output-' + time + '.png');
       const localFileLocation = './images/Outputs/output-' + time + '.png';
       bucket.upload(localFileLocation, {
           public: true
@@ -120,8 +119,19 @@ port.on('open', function () {
       const getPublicThumbnailUrlForItem = fileName => {
         return `https://storage.googleapis.com/${BUCKET_NAME}/img/${fileName}`;
       }
-    }
 
+      motor.push({
+        'date': time,
+        'greyscale': image
+      });
+
+      // console.log("motor: ", motor);
+
+      fs.writeFileSync('motor.json', JSON.stringify(motor), 'utf8', (err) => {
+        if (err) throw err;
+        console.log('The image was appended to the json file!');
+      });
+    }
 
     console.log('image: ', image, '\n');
     image.length = 0;
@@ -151,3 +161,5 @@ port.on('open', function () {
     test();
   });
 });
+
+require('./empty');

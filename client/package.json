@@ -11,7 +11,7 @@
         "url": "https://github.com/plebeiathon/motorskills.git"
     },
     "license": "MIT",
-    "author": "Adrian Darian",
+    "author": "Plebeiathon",
     "main": "gulpfile.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"

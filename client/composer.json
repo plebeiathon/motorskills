@@ -4,16 +4,7 @@
   "type": "project",
   "license": "MIT",
   "authors": [{
-      "name": "Adrian Darian"
-    },
-    {
-      "name": "Dan Tran"
-    },
-    {
-      "name": "Denis Vashchenko"
-    },
-    {
-      "name": "Brian Hungerman"
+      "name": "Plebeiathon"
     }
   ],
   "require": {}
