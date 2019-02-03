@@ -3407,6 +3407,11 @@ usb-barcode-scanner@^1.0.2:
     lodash "^4.17.10"
     node-hid "^0.7.2"
 
+usb-barcode-transform@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/usb-barcode-transform/-/usb-barcode-transform-1.0.2.tgz#02e67891de9cb88defa6b9dc8a75753d52d0777f"
+  integrity sha512-JPThUYB9fOXLoP0pQANwHkvAsy6d5gGO2pG8JI1kdrRI2QhUDDILKD1zwYftVOsdN6pTxDw+22cuhABoTlwSzQ==
+
 use@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"

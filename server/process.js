@@ -92,7 +92,7 @@ port.on('open', function () {
         console.log('The image was appended to the csv file!');
       });
 
-      const file = bucket.file('output-' + time + '.png');
+      const file = bucket.file(`output-${time}.png`);
       file.exists()
         .then(exists => {
           if (exists) {
@@ -106,7 +106,7 @@ port.on('open', function () {
 
 
       // upload file to bucket
-      const localFileLocation = './images/Outputs/output-' + time + '.png';
+      const localFileLocation = `./images/Outputs/output-${time}.png`;
       bucket.upload(localFileLocation, {
           public: true
         })
@@ -122,10 +122,11 @@ port.on('open', function () {
 
       motor.push({
         'date': time,
-        'greyscale': image
+        'greyscale': image,
+        'image': `images/Outputs/output-${time}.png`
       });
 
-      // console.log("motor: ", motor);
+      console.log("motor: ", image);
 
       fs.writeFileSync('motor.json', JSON.stringify(motor), 'utf8', (err) => {
         if (err) throw err;
