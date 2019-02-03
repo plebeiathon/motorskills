@@ -1,36 +1,42 @@
-// const automl = require('@google-cloud/automl').v1beta1;
-// const fs = require('fs');
+const automl = require('@google-cloud/automl').v1beta1;
+const fs = require('fs');
 
-// const client = new automl.PredictionServiceClient();
+const client = new automl.PredictionServiceClient(); // gcloud auth application-default login
 
-// const projectId = 'motorskills'
-// const computeRegion = 'us-west1'
-// const modelId = 'ICN7961539503330524376'
+const projectId = 'slo-hacks'
+const computeRegion = 'us-central1'
+const modelId = 'ICN5975517313197165750';
 // const filePath = '/Volumes/X/GitHub/motorskills/server/images/Outputs/output-1549134990550.png'
-// const scoreThreshold = '0.5'
+const scoreThreshold = '0.5'
 
-// const modelFullId = client.modelPath(projectId, computeRegion, modelId);
-// const content = fs.readFileSync(filePath, 'base64');
+const modelFullId = client.modelPath(projectId, computeRegion, modelId);
+const filePath = 'images/Outputs/output-1549157703643.png';
+const content = fs.readFileSync(filePath, 'base64');
 
-// const params = {};
+const params = {};
 
+if (scoreThreshold) {
+  params.scoreThreshold = scoreThreshold;
+}
 
-// if (scoreThreshold) {
-//     params.scoreThreshold = scoreThreshold;
-// }
+const payload = {};
+const data = require('./motor.json');
+//console.log(data)
+payload.image = { imageBytes: content };
 
-// const payload = {};
-// payload.image = { imageBytes: content };
+async function predict() {
+  const [response] = await client.predict({
+    name: modelFullId,
+    payload: payload,
+    params: params,
+  });
+  console.log(`Prediction results:`);
+  response.payload.forEach(result => {
+    console.log(`Predicted class name: ${result.displayName}`);
+    console.log(`Predicted class score: ${result.classification.score}`);
+  });
+}
 
-// async function predict() {
-//     const [response] = await client.predict({
-//         name: modelFullId,
-//         payload: payload,
-//         params: params,
-//     });
-//     console.log(`Prediction results:`);
-//     response.payload.forEach(result => {
-//         console.log(`Predicted class name: ${result.displayName}`);
-//         console.log(`Predicted class score: ${result.classification.score}`);
-//     });
-// }
+// curl -X POST -H "Content-Type: application/json" \
+//   -H "Authorization: Bearer $(gcloud auth application-default print-access-token)" \
+//   https://automl.googleapis.com/v1beta1/projects/slo-hacks/locations/us-central1/models/ICN5975517313197165750:predict -d @request.json
