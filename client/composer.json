@@ -1,0 +1,11 @@
+{
+  "name": "plebeiathon/motorskills",
+  "description": "A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.",
+  "type": "project",
+  "license": "MIT",
+  "authors": [{
+      "name": "Plebeiathon"
+    }
+  ],
+  "require": {}
+}
