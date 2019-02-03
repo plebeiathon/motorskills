@@ -9,10 +9,10 @@ const myBucket = storage.bucket('slo-hacks-vcm');
 
 const client = new automl.PredictionServiceClient(); // gcloud auth application-default login
 
-const projectId = 'slo-hacks'
-const computeRegion = 'us-central1'
+const projectId = 'slo-hacks';
+const computeRegion = 'us-central1';
 const modelId = 'ICN287417307825518261';
-const scoreThreshold = '0.5'
+const scoreThreshold = '0.5';
 
 const modelFullId = client.modelPath(projectId, computeRegion, modelId);
 

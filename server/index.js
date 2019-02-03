@@ -7,7 +7,7 @@ const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
 const fs = require('fs');
 
-require('./ml');
+// require('./ml');
 
 // fs.readFile('motor.json', bar)
 
@@ -40,23 +40,23 @@ app.use((req, res) => {
 });
 
 // Parallel Clustering
-// if (cluster.isMaster) { // Check if Cluster is a Master
-//   console.log(`Master ${process.pid} is running`);
+if (cluster.isMaster) { // Check if Cluster is a Master
+  // console.log(`Master ${process.pid} is running`);
 
   // Fork workers.
-//   for (let i = 0; i < numCPUs; i++) {
-//     cluster.fork();
-//   }
+  for (let i = 0; i < numCPUs; i++) {
+    cluster.fork();
+  }
 
-//   cluster.on('exit', (worker, code, signal) => {
-//     console.log(`worker ${worker.process.pid} died`);
-//   });
-// } else {
+  cluster.on('exit', (worker, code, signal) => {
+    // console.log(`worker ${worker.process.pid} died`);
+  });
+} else {
   // Workers can share any TCP connection
   // In this case it is an HTTP server
   http.listen(process.env.PORT || SERVER_PORT, () => {
     console.log(`Server started on the http://localhost:${SERVER_PORT}`);
   });
 
-//   console.log(`Worker ${process.pid} started`);
-// }
+  // console.log(`Worker ${process.pid} started`);
+}
