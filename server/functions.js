@@ -1,3 +1,4 @@
+// GCP Cloud Function
 const automl = require('@google-cloud/automl').v1beta1;
 const {Storage} = require('@google-cloud/storage');
 const admin = require('firebase-admin');

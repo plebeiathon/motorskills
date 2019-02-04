@@ -1,20 +1,34 @@
-/*!
+const firebase = require("firebase");
+const admin = require('firebase-admin');
+// Required for side-effects
+require("firebase/firestore");
 
-=========================================================
-* Argon Dashboard - v1.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard
-* Copyright 2018 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md)
-
-* Coded by www.creative-tim.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
+// Initialize Firebase
+var config = {
+	apiKey: "AIzaSyDjK-DQcY2_8wBTWweA5VvHpo4Yno4QMkY",
+	authDomain: "slo-hacks.firebaseapp.com",
+	databaseURL: "https://slo-hacks.firebaseio.com",
+	projectId: "slo-hacks",
+	storageBucket: "slo-hacks.appspot.com",
+	messagingSenderId: "913680861950"
+};
+firebase.initializeApp(config);
+var db = firebase.firestore();
+var pred = [], rpm = [];
+db.collection("predictions").get().then((querySnapshot) => {
+	querySnapshot.forEach((doc) => {
+		pred.push(doc.data());
+		// console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
+	});
+});
+db.collection("revolutions").get().then((querySnapshot) => {
+	querySnapshot.forEach((doc) => {
+		rpm.push(doc.data().rpm);
+		// console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
+	});
+});
+console.log(pred);
+console.log(rpm);
 
 //
 // Bootstrap Datepicker
@@ -998,10 +1012,16 @@ var SalesChart = (function() {
 
 	var $chart = $('#chart-sales');
 
-
+	
 	// Methods
 
 	function init($chart) {
+
+		var val = [];
+	for (var cnt = 0; cnt < rpm.length; cnt++) {
+		val.push(rpm[cnt]);
+	}
+
 
 		var salesChart = new Chart($chart, {
 			type: 'line',
@@ -1042,7 +1062,7 @@ var SalesChart = (function() {
 				labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 				datasets: [{
 					label: 'Performance',
-					data: [0, 20, 10, 30, 15, 40, 20, 60, 60]
+					data: val
 				}]
 			}
 		});
